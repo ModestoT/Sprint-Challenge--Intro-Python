@@ -75,7 +75,15 @@ for c in cities:
 # Salt Lake City: (40.7774,-111.9301)
 
 # TODO Get latitude and longitude values from the user
+input1 = input('Enter lat1, long1: ')
+latNlong1 = input1.split(',')
+lnlfloats1 = [float(n) for n in latNlong1]
 
+input2 = input('Enter lat2, long2: ')
+latNlong2 = input2.split(',')
+lnlfloats2 = [float(n) for n in latNlong2]
+
+print(lnlfloats1, lnlfloats2)
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
   # within will hold the cities that fall within the specified region
   within = []
