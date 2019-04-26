@@ -83,13 +83,27 @@ input2 = input('Enter lat2, long2: ')
 latNlong2 = input2.split(',')
 lnlfloats2 = [float(n) for n in latNlong2]
 
-print(lnlfloats1, lnlfloats2)
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
   # within will hold the cities that fall within the specified region
   within = []
-
+  newLat1 = lat1
+  newLat2 = lat2
+  newLon1 = lon1
+  newLon2 = lon2
   # TODO Ensure that the lat and lon valuse are all floats
   # Go through each city and check to see if it falls within 
   # the specified coordinates.
+  if lat1 > lat2:
+    newLat1 = lat2
+    newLon1 = lon2
+    newLat2 = lat1
+    newLon2 = lon1
+
+  for c in cities:
+    if float(c.lat) >= newLat1 and float(c.lat) <= newLat2 and float(c.lon) >= newLon1 and float(c.lon) <= newLon2:
+      within.append(c)
 
   return within
+
+print(cityreader_stretch(lnlfloats1[0], lnlfloats1[1], lnlfloats2[0], lnlfloats2[1], cities))
+
